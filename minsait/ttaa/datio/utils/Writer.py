@@ -9,6 +9,6 @@ class Writer:
         df \
             .coalesce(2) \
             .write \
-            .partitionBy(teamPosition.name) \
+            .partitionBy(team_position.name) \
             .mode(OVERWRITE) \
             .parquet(OUTPUT_PATH);

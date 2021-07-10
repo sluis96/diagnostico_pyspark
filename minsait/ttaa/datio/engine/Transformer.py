@@ -39,10 +39,10 @@ class Transformer(Writer):
         column team_position != null && column short_name != null && column overall != null
         """
         df = df.filter(
-            (shortName.column().isNotNull()) &
-            (shortName.column().isNotNull()) &
+            (short_name.column().isNotNull()) &
+            (short_name.column().isNotNull()) &
             (overall.column().isNotNull()) &
-            (teamPosition.column().isNotNull())
+            (team_position.column().isNotNull())
         )
         return df
 
@@ -52,10 +52,10 @@ class Transformer(Writer):
         :return: a DataFrame with just 5 columns...
         """
         df = df.select(
-            shortName.column(),
+            short_name.column(),
             overall.column(),
-            heightCm.column(),
-            teamPosition.column(),
+            height_cm.column(),
+            team_position.column(),
             catHeightByPosition.column()
         )
         return df
@@ -70,8 +70,8 @@ class Transformer(Writer):
              cat C for the rest
         """
         w: WindowSpec = Window \
-            .partitionBy(teamPosition.column()) \
-            .orderBy(heightCm.column().desc())
+            .partitionBy(team_position.column()) \
+            .orderBy(height_cm.column().desc())
         rank: Column = f.rank().over(w)
 
         rule: Column = f.when(rank < 10, "A") \
