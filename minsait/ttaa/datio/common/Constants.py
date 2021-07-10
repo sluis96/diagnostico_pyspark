@@ -1,0 +1,5 @@
+INPUT_PATH = "resources/data/players_21.csv"
+HEADER = "header"
+INFER_SCHEMA = "inferSchema"
+OUTPUT_PATH = "resources/data/output"
+OVERWRITE = "overwrite"
