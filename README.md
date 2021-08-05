@@ -1,4 +1,4 @@
-# Examen Diagnostico JAVA to Big Data
+# Examen Diagnostico Python to Big Data
 
 ## Instrucciones
 
